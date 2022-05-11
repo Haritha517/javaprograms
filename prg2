@@ -1,0 +1,55 @@
+Removing nth element from end
+
+
+
+class LinkedList {
+    Node head; 
+ 
+    class Node {
+        int data;
+        Node next;
+        Node(int d)
+        {
+            data=d;
+            next=null;
+        }
+    }
+ 
+    void nthFromEnd(int n)
+    {
+        int len=0;
+        Node temp=head;
+ 
+        while(temp!=null) {
+            temp=temp.next;
+            len++;
+        }
+ 
+        if(len < n)
+            return;
+ 
+        temp=head;
+
+        for(int i=1; i<len-n+1;i++)
+            temp=temp.next;
+ 
+        System.out.println(temp.data);
+    }
+ 
+    public void push(int newdata)
+    {
+        Node newnode=new Node(newdata);
+        newnode.next=head;
+        head=newnode;
+    }
+ 
+    public static void main(String[] args)
+    {
+        LinkedList ll1=new LinkedList();
+        ll1.push(20);
+        ll1.push(4);
+        ll1.push(15);
+        ll1.push(35);
+        ll1.nthFromEnd(2);
+    }
+} 
